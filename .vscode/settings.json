@@ -1,0 +1,11 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\Vedashree\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "python.terminal.executeInFileDir": true,
+    "code-runner.executorMap": {
+        "python": "py -u"
+    },
+    "code-runner.runInTerminal": true,
+    "terminal.integrated.env.windows": {
+        "PATH": "C:\\Users\\Vedashree\\AppData\\Local\\Programs\\Python\\Python314;C:\\Users\\Vedashree\\AppData\\Local\\Programs\\Python\\Python314\\Scripts;${env:PATH}"
+    }
+}

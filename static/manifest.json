@@ -1,0 +1,17 @@
+{
+  "name": "SkyPulse Weather",
+  "short_name": "SkyPulse",
+  "description": "Fast, free weather forecast, AQI, hourly rain & 5-city comparison",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b132b",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

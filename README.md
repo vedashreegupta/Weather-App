@@ -1,90 +1,41 @@
-# 🌤️ Project 4: Weather App with API (Open-Meteo)
+# 🌤️ SkyPulse Weather (Mobile PWA + Streamlit + CLI)
 
-> A fast, zero-configuration Python CLI tool that fetches real-time weather, 5-day forecasts, and multi-city comparisons using live internet APIs.
+A fast, free Python weather app powered by the **Open-Meteo API** — **zero API key required**!
 
----
-
-## 🎯 What This Project Actually Is
-A clean Python script where you type:
-```text
-Enter city: Pune
-```
-And it prints:
-```text
-Pune: 25.0°C, Clear sky, Humidity 48%, Wind 3.4 km/h
-```
-
-It does this by calling a free weather API (**Open-Meteo**) over the internet, receiving JSON back, and parsing it.
-
----
-
-## 💡 What Problem Does It Solve?
-1. **The Learning Problem (Core Skill):**
-   - Teaches the fundamental industry skill: **API Integration**.
-   - Connects two real APIs: **Geocoding API** (City Name → Latitude & Longitude) and **Forecast API** (Coordinates → Live Weather & Forecast JSON).
-   - Handles network timeouts, HTTP status errors, and invalid inputs gracefully.
-2. **The Automation / Customization Problem:**
-   - **Compare Mode:** Compare weather across multiple cities side-by-side (`py weather.py Pune Mumbai Delhi`) — saving multiple clicks compared to manual web browsing.
-   - **Travel Packer:** Automatically analyzes rain chance and temperature to advise if you should carry an umbrella, raincoat, or warm jacket.
-   - **Fast & Ad-Free:** Zero bloat, lightweight terminal tool designed for developers.
-3. **The Portfolio Problem:**
-   - Shows employers you understand HTTP requests, JSON parsing, dictionary manipulation, and CLI tools.
+## ✨ Features
+- **📱 Zero-Flicker Mobile PWA (`pwa_app.py` + `static/`):** Installable on Android/iOS Home Screen (`manifest.json` + `sw.js`), smooth glassmorphic UI, instant API calls with zero page reload flicker.
+- **📍 Real Browser GPS + IP Fallback:** Exact `navigator.geolocation` with reverse geocoding and automatic IP fallback.
+- **🕒 Hourly Strip + 📅 5-Day Forecast:** Next 12 hours in 2-hour slots plus 5-day High/Low forecast cards.
+- **°C / °F Toggle & ⭐ Recent Cities:** Switch units anytime and tap recent cities quickly.
+- **😷 AQI & ☀️ UV Index:** Live US Air Quality Index and UV levels.
+- **🌍 Compare up to 5 Cities (Parallel):** Fast concurrent fetching with Warmest / Coolest / Most Humid highlights.
+- **☔ Umbrella & 🚨 Weather Alerts:** Smart rain advice plus storm, heat, cold, wind, humidity, fog, AQI, and UV alerts.
+- **📶 Retry & Offline Cache:** Automatically retries and saves the last result in `.weather_cache.json`.
 
 ---
 
 ## 🚀 How to Run
 
-### Method 1: Double-Click
-Simply double-click `run.bat` in this folder!
-
-### Method 2: From Terminal
-Make sure `requests` is installed:
+### Option 1: Zero-Flicker Mobile PWA (Recommended ⚡)
+Double-click **`run_pwa.bat`**, or run in terminal:
 ```bash
-pip install -r requirements.txt
+python pwa_app.py
 ```
+Open `http://localhost:8000` (or the local network IP on your phone over Wi-Fi, then tap **Add to Home Screen**).
 
-#### 1. Interactive Mode
+### Option 2: Streamlit Web Dashboard (`app.py`)
+Double-click **`run_web.bat`**, or run:
 ```bash
-py weather.py
+python -m streamlit run app.py
 ```
-```text
-Enter city: Pune
-👉 Pune: 25.0°C, Clear sky, Humidity 48%, Wind 3.4 km/h
-```
+*(Great for 1-click free hosting at [share.streamlit.io](https://share.streamlit.io).)*
 
-#### 2. Direct Single City Search
-```bash
-py weather.py Pune
-```
-
-#### 3. Compare Multiple Cities Side-by-Side
-```bash
-py weather.py Pune Mumbai Delhi
-```
-*Outputs an ASCII comparison table with temperature, condition, humidity, and wind!*
-
-#### 4. 5-Day Forecast & Travel Packing Advice
-```bash
-py weather.py Pune --forecast --pack
-```
+### Option 3: Terminal CLI (`weather.py`)
+Open **`weather.py`** in VS Code and click **▶ Run** (or double-click **`run.bat`**).
 
 ---
 
-## 📂 Project Structure
-
+## 🧪 Run Unit Tests
+```bash
+python -m unittest test_weather.py -v
 ```
-weather_app/
-├── weather.py          # Main application (API calls, parsing, CLI modes)
-├── requirements.txt    # Dependencies (requests)
-├── run.bat             # 1-click Windows launcher
-└── README.md           # Documentation & learning notes
-```
-
----
-
-## 🛠️ Concepts Learned & Used
-- `requests.get()` for sending HTTP GET requests
-- Parsing nested JSON dictionaries & lists
-- Error handling: `try/except` for network errors, 404/503 status codes, and invalid inputs
-- WMO Weather Code decoding (translating numbers like `0`, `45`, `61` into readable weather descriptions & emojis)
-- `argparse` for clean command-line arguments and flags
